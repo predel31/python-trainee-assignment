@@ -21,7 +21,7 @@ async def get_text(url: str) -> str | None:
             async with session.get(url) as resp:
                 if 400 <= resp.status < 500:
                     logger.error("Client error")
-                elif resp.status > 500:
+                elif resp.status >= 500:
                     logger.error("server error")
                 else:
                     return await resp.text()
